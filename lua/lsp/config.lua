@@ -23,7 +23,7 @@ function M.setup()
 
   local lspconfig = require("lspconfig")
   local servers = {
-    "lua_ls", "ts_ls", "html", "cssls", "jsonls", "pyright", "bashls"
+    "lua_ls", "ts_ls", "html", "cssls", "jsonls", "pyright", "bashls", "sqlls"
   }
 
   require("mason").setup({
@@ -144,4 +144,4 @@ function M.setup()
   vim.g.indent_blankline_enabled = false
 end
 
-return M  
+return M
