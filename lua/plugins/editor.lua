@@ -1,4 +1,3 @@
--- Datei: nvim_neu/lua/plugins/editor.lua
 return {
   -- Mini-Plugins
   {
@@ -268,7 +267,7 @@ return {
         ensure_installed = { "html", "css", "javascript", "lua", "sql" },
         indent = {
           enable = true,
-          disable = {},
+          disable = { "sql" }, -- Deaktiviere Auto-Indent für SQL
         },
         highlight = {
           enable = true,
@@ -299,17 +298,17 @@ return {
     event = "VeryLazy",
   },
 
-  -- HTML Formatter (Beispiel: Prettier) - Erweitert um SQL
+  -- HTML Formatter (Beispiel: Prettier) - Mit sqlfmt für SQL
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- Formatierung vor dem Speichern (optional)
     config = function()
       require("conform").setup({
         formatters_by_ft = {
-          html = { "remove_double_angle", "prettier" }, -- Zuerst unser Custom-Formatter, dann Prettier
+          html = { "remove_double_angle", "prettier" },
           css = { "prettier" },
           lua = { "stylua" },
-          sql = { "sql_formatter" }, -- SQL-Formatierung mit sqlformat (zuverlässiger)
+          sql = { "sqlfmt" }, -- Verwende sqlfmt von Mason
         },
         format_on_save = {
           timeout_ms = 500,
@@ -328,15 +327,14 @@ return {
               return cleaned
             end,
           },
-          -- SQL-Formatter mit sqlformat (Python-basiert, sehr zuverlässig)
-          sqlformat = {
-            command = "sql_formatter",
+          -- sqlfmt Konfiguration für kompakte INSERT Statements
+          sqlfmt = {
+            command = "sqlfmt",
             args = {
-              "--reindent",
-              "--keywords", "upper",
-              "--identifiers", "lower",
-              "--strip-comments",
-              "-"
+              "--print-only",
+              "--line-length", "120", -- Längere Zeilen erlauben
+              "--dialect", "generic",   -- Generischer SQL-Dialekt
+              "-",                      -- Stdin verwenden
             },
             stdin = true,
           },
