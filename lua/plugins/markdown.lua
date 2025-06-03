@@ -13,21 +13,21 @@ return {
         -- 🚀 Preview-Einstellungen - AUCH im Insert-Modus!
         preview = {
           modes = { "n", "no", "c", "i" }, -- ✅ "i" für Insert-Modus hinzugefügt
-          hybrid_modes = { "n", "i" }, -- ✅ Insert-Modus als Hybrid-Modus
-          
+          hybrid_modes = { "n", "i" },     -- ✅ Insert-Modus als Hybrid-Modus
+
           callbacks = {
-            on_enable = function (_, win)
+            on_enable = function(_, win)
               vim.wo[win].conceallevel = 2;
               vim.wo[win].concealcursor = ""; -- ✅ Leerer String zeigt auch im Insert-Modus
             end
           }
         },
-        
+
         markdown = {
           -- 📝 Text-Formatierung (Emphasis)
           emphasis = {
             enable = true,
-            
+
             bold = {
               hl = "MarkviewBold"
             },
@@ -41,12 +41,12 @@ return {
               hl = "MarkviewStrikethrough"
             }
           },
-          
+
           -- 🌙 ÜBERSCHRIFTEN - Catppuccin Farben DIREKT hier
           headings = {
             enable = true,
             shift_width = 0,
-            
+
             heading_1 = {
               style = "label",
               hl = "MarkviewHeading1",
@@ -58,7 +58,7 @@ return {
             },
             heading_2 = {
               style = "label",
-              hl = "MarkviewHeading2", 
+              hl = "MarkviewHeading2",
               icon = "",
               corner_left = "",
               corner_right = "",
@@ -102,7 +102,7 @@ return {
               padding_right = " "
             }
           },
-          
+
           -- 🔥 Horizontale Linien
           horizontal_rules = {
             enable = true,
@@ -117,12 +117,12 @@ return {
               }
             }
           },
-          
+
           -- 📋 Listen
           list_items = {
             enable = true,
             shift_width = 2,
-            
+
             marker_minus = {
               text = "●",
               hl = "MarkviewListItemMinus"
@@ -140,7 +140,7 @@ return {
               hl = "MarkviewListItemDot"
             }
           },
-          
+
           -- 🔢 Block Quotes
           block_quotes = {
             enable = true,
@@ -149,15 +149,15 @@ return {
               border_hl = "MarkviewBlockQuoteBorder"
             }
           },
-          
+
           -- 📊 Tabellen
           tables = {
             enable = true,
             use_virt_lines = false,
-            
+
             text = {
               corner_tl = "╭",
-              corner_tr = "╮", 
+              corner_tr = "╮",
               corner_bl = "╰",
               corner_br = "╯",
               corner_il = "├",
@@ -173,16 +173,16 @@ return {
               row_sep = "─",
               filler = " "
             },
-            
+
             hl = {
               header = "MarkviewTableHeader",
-              row = "MarkviewTableRow", 
+              row = "MarkviewTableRow",
               border = "MarkviewTableBorder",
               col = "MarkviewTableCol"
             }
           }
         },
-        
+
         -- 💻 Code Blöcke
         code_blocks = {
           enable = true,
@@ -192,17 +192,17 @@ return {
           border_hl = "MarkviewCode",
           info_hl = "MarkviewCodeInfo"
         },
-        
+
         -- 🔤 Inline Code
         inline_codes = {
           enable = true,
           corner_left = "",
-          corner_right = "", 
+          corner_right = "",
           padding_left = "",
           padding_right = "",
           hl = "MarkviewInlineCode"
         },
-        
+
         -- ✅ Checkboxen
         checkboxes = {
           enable = true,
@@ -219,27 +219,27 @@ return {
             hl = "MarkviewCheckboxPending"
           }
         },
-        
+
         -- 🔗 Links
         links = {
           enable = true,
-          
+
           hyperlinks = {
             icon = " ",
             hl = "MarkviewHyperlink"
           },
-          
+
           images = {
             icon = " ",
-            hl = "MarkviewImageLink"  
+            hl = "MarkviewImageLink"
           },
-          
+
           emails = {
             icon = " ",
             hl = "MarkviewEmail"
           }
         },
-        
+
         -- 🏷️ HTML Tags
         html = {
           enable = true,
@@ -251,154 +251,154 @@ return {
           }
         }
       })
-      
+
       -- 🌙 CATPPUCCIN-FARBEN sofort nach Setup setzen
       vim.defer_fn(function()
         -- 🌙 ÜBERSCHRIFTEN - Moderne Catppuccin-Farben
-        vim.api.nvim_set_hl(0, "MarkviewHeading1", { 
+        vim.api.nvim_set_hl(0, "MarkviewHeading1", {
           fg = "#cba6f7", -- Mauve (Catppuccin)
-          bold = true, 
+          bold = true,
           italic = true
         })
-        
-        vim.api.nvim_set_hl(0, "MarkviewHeading2", { 
+
+        vim.api.nvim_set_hl(0, "MarkviewHeading2", {
           fg = "#89b4fa", -- Blue (Catppuccin)
-          bold = true, 
-          italic = true 
+          bold = true,
+          italic = true
         })
-        
-        vim.api.nvim_set_hl(0, "MarkviewHeading3", { 
+
+        vim.api.nvim_set_hl(0, "MarkviewHeading3", {
           fg = "#74c7ec", -- Sky (Catppuccin)
-          bold = true 
+          bold = true
         })
-        
-        vim.api.nvim_set_hl(0, "MarkviewHeading4", { 
+
+        vim.api.nvim_set_hl(0, "MarkviewHeading4", {
           fg = "#94e2d5", -- Teal (Catppuccin)
-          italic = true 
+          italic = true
         })
-        
-        vim.api.nvim_set_hl(0, "MarkviewHeading5", { 
+
+        vim.api.nvim_set_hl(0, "MarkviewHeading5", {
           fg = "#a6e3a1" -- Green (Catppuccin)
         })
-        
-        vim.api.nvim_set_hl(0, "MarkviewHeading6", { 
+
+        vim.api.nvim_set_hl(0, "MarkviewHeading6", {
           fg = "#f38ba8" -- Pink (Catppuccin)
         })
-        
+
         -- 📝 TEXT-FORMATIERUNG - Catppuccin Stil
-        vim.api.nvim_set_hl(0, "MarkviewBold", { 
+        vim.api.nvim_set_hl(0, "MarkviewBold", {
           fg = "#fab387", -- Peach (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewItalic", { 
+        vim.api.nvim_set_hl(0, "MarkviewItalic", {
           fg = "#89dceb", -- Sapphire (Catppuccin)
-          italic = true 
+          italic = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewBoldItalic", { 
+        vim.api.nvim_set_hl(0, "MarkviewBoldItalic", {
           fg = "#cba6f7", -- Mauve (Catppuccin)
-          bold = true, 
-          italic = true 
+          bold = true,
+          italic = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewStrikethrough", { 
+        vim.api.nvim_set_hl(0, "MarkviewStrikethrough", {
           fg = "#6c7086", -- Overlay0 (Catppuccin)
-          strikethrough = true 
+          strikethrough = true
         })
-        
+
         -- 💻 CODE - Catppuccin Stil
-        vim.api.nvim_set_hl(0, "MarkviewCode", { 
+        vim.api.nvim_set_hl(0, "MarkviewCode", {
           fg = "#cdd6f4", -- Text (Catppuccin)
-          italic = true 
+          italic = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewInlineCode", { 
+        vim.api.nvim_set_hl(0, "MarkviewInlineCode", {
           fg = "#a6e3a1", -- Green (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewCodeInfo", { 
+        vim.api.nvim_set_hl(0, "MarkviewCodeInfo", {
           fg = "#b4befe", -- Lavender (Catppuccin)
-          italic = true 
+          italic = true
         })
-        
+
         -- 🔴 LISTEN-MARKER - Catppuccin Stil
-        vim.api.nvim_set_hl(0, "MarkviewListItemMinus", { 
+        vim.api.nvim_set_hl(0, "MarkviewListItemMinus", {
           fg = "#f38ba8", -- Pink (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewListItemPlus", { 
+        vim.api.nvim_set_hl(0, "MarkviewListItemPlus", {
           fg = "#94e2d5", -- Teal (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewListItemStar", { 
+        vim.api.nvim_set_hl(0, "MarkviewListItemStar", {
           fg = "#f9e2af", -- Yellow (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewListItemDot", { 
+        vim.api.nvim_set_hl(0, "MarkviewListItemDot", {
           fg = "#cba6f7", -- Mauve (Catppuccin)
-          bold = true 
+          bold = true
         })
-        
+
         -- 🔥 Horizontale Linien
-        vim.api.nvim_set_hl(0, "MarkviewHorizontalRule", { 
+        vim.api.nvim_set_hl(0, "MarkviewHorizontalRule", {
           fg = "#89b4fa", -- Blue (Catppuccin)
-          bold = true 
+          bold = true
         })
-        
+
         -- ✅ Checkboxen - Catppuccin Stil
-        vim.api.nvim_set_hl(0, "MarkviewCheckboxChecked", { 
+        vim.api.nvim_set_hl(0, "MarkviewCheckboxChecked", {
           fg = "#a6e3a1", -- Green (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewCheckboxUnchecked", { 
+        vim.api.nvim_set_hl(0, "MarkviewCheckboxUnchecked", {
           fg = "#6c7086", -- Overlay0 (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewCheckboxPending", { 
+        vim.api.nvim_set_hl(0, "MarkviewCheckboxPending", {
           fg = "#f9e2af", -- Yellow (Catppuccin)
-          bold = true 
+          bold = true
         })
-        
+
         -- 💬 Block Quotes
-        vim.api.nvim_set_hl(0, "MarkviewBlockQuoteBorder", { 
+        vim.api.nvim_set_hl(0, "MarkviewBlockQuoteBorder", {
           fg = "#b4befe", -- Lavender (Catppuccin)
-          bold = true 
+          bold = true
         })
-        
+
         -- 📊 Tabellen - Catppuccin Stil
-        vim.api.nvim_set_hl(0, "MarkviewTableHeader", { 
+        vim.api.nvim_set_hl(0, "MarkviewTableHeader", {
           fg = "#cba6f7", -- Mauve (Catppuccin)
-          bold = true, 
-          italic = true 
+          bold = true,
+          italic = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewTableRow", { 
+        vim.api.nvim_set_hl(0, "MarkviewTableRow", {
           fg = "#cdd6f4" -- Text (Catppuccin)
         })
-        vim.api.nvim_set_hl(0, "MarkviewTableBorder", { 
+        vim.api.nvim_set_hl(0, "MarkviewTableBorder", {
           fg = "#6c7086", -- Overlay0 (Catppuccin)
-          bold = true 
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewTableCol", { 
+        vim.api.nvim_set_hl(0, "MarkviewTableCol", {
           fg = "#74c7ec" -- Sky (Catppuccin)
         })
-        
+
         -- 🔗 Links - Catppuccin Stil
-        vim.api.nvim_set_hl(0, "MarkviewHyperlink", { 
+        vim.api.nvim_set_hl(0, "MarkviewHyperlink", {
           fg = "#89b4fa", -- Blue (Catppuccin)
-          underline = true, 
-          bold = true 
+          underline = true,
+          bold = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewImageLink", { 
+        vim.api.nvim_set_hl(0, "MarkviewImageLink", {
           fg = "#fab387", -- Peach (Catppuccin)
-          italic = true 
+          italic = true
         })
-        vim.api.nvim_set_hl(0, "MarkviewEmail", { 
+        vim.api.nvim_set_hl(0, "MarkviewEmail", {
           fg = "#a6e3a1", -- Green (Catppuccin)
-          underline = true 
+          underline = true
         })
-        
+
         print("🌙 Catppuccin Farben für Markview gesetzt!")
       end, 100)
     end
   },
-  
+
   -- Tabellen-Plugin
   {
     "dhruvasagar/vim-table-mode",
@@ -413,12 +413,12 @@ return {
       vim.g.table_mode_update_time = 300
     end,
     keys = {
-      { "<leader>tm", "<cmd>TableModeToggle<cr>", desc = "Toggle Table Mode" },
-      { "<leader>tt", "<cmd>Tableize<cr>", desc = "Tableize" },
+      { "<leader>tm", "<cmd>TableModeToggle<cr>",  desc = "Toggle Table Mode" },
+      { "<leader>tt", "<cmd>Tableize<cr>",         desc = "Tableize" },
       { "<leader>tr", "<cmd>TableModeRealign<cr>", desc = "Realign Table" }
     }
   },
-  
+
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
